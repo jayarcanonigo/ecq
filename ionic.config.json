@@ -1,0 +1,7 @@
+{
+  "name": "ecq",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

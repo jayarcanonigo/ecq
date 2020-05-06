@@ -1,0 +1,27 @@
+ion-note{
+    padding-left: 6px;
+}
+ion-toolbar {
+    text-align: right;
+    padding-right: 10px;
+}
+ion-list{
+padding: 0px;
+}
+.image-container{
+width: 100%px;
+align-content: center;
+}
+.profile-image {
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    -moz-border-radius: 50%; 
+    -webkit-border-radius: 50%; 
+    border-radius: 50%;
+      background: url(http://news.bbcimg.co.uk/media/images/59678000/jpg/_59678991_profile_kimjongun_afp2_crop142914682.jpg) no-repeat;
+      background-position: -15px -3px;
+      background-size: cover;
+}
+
+	
