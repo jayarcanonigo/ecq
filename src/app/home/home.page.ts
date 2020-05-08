@@ -24,6 +24,12 @@ export class HomePage implements OnInit {
       url: '/home/order',
       icon: 'cart'
     }
+    ,
+    {
+      title: 'Your Location',
+      url: '/home/google-map',
+      icon: 'location'
+    }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() { }
