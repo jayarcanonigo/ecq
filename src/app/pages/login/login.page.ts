@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,24 +18,34 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private storageServices: StorageService
+    private storageServices: StorageService,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
   }
 
-  loginAction(){
-    this.router.navigate(['home']);
-    /*this.authService.login(this.authenticate).subscribe((res: any) =>{
-      if(res.authenticate){
-        console.log(res.authenticate);
-        
-      }else{
-        console.log('Incorrect username or password');
-        
+  loginAction() {
+
+    this.authService.getUser(this.authenticate.user_name).subscribe(user => {
+      console.log("Exists : ", user);
+      if (user) {
+        if (user.password == this.authenticate.pwd) {
+          this.router.navigate(['home']);
+        } else {
+          this.showToast('Incorrect username or password');
+        }
+
+      } else {
+        this.showToast('Incorrect username or password');
       }
-    });*/
-   // console.log(this.authenticate);
-    
+    });
+
+  }
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present());
   }
 }

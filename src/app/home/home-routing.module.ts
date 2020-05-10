@@ -42,6 +42,18 @@ const routes: Routes = [
     {
       path: 'google-map',
       loadChildren: () => import('../pages/google-map/google-map.module').then(m => m.GoogleMapPageModule)
+    },
+    {
+      path: 'todo/:id',
+      loadChildren: () => import('../pages/todo-details/todo-details.module').then(m => m.TodoDetailsPageModule)
+    },
+    {
+      path: 'todo',
+      loadChildren: () => import('../pages/todo-details/todo-details.module').then(m => m.TodoDetailsPageModule)
+    },
+    {
+      path: 'todo-list',
+      loadChildren: () => import('../pages/todo-list/todo-list.module').then(m => m.TodoListPageModule)
     }
     ]
   }];

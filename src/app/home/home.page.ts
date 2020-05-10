@@ -29,6 +29,11 @@ export class HomePage implements OnInit {
       title: 'Your Location',
       url: '/home/google-map',
       icon: 'location'
+    },
+    {
+      title: 'Todo',
+      url: '/home/todo-list',
+      icon: 'location'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

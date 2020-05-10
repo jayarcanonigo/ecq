@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  apiUrl : 'https://wsint.advisen.com/cybermetrix/'
+  apiUrl : 'https://wsint.advisen.com/cybermetrix/',
+  firebaseConfig : {
+    apiKey: "AIzaSyCfWdth7o2BSNa-K2Etgf4FUAWQzFHnnek",
+    authDomain: "ecq-express.firebaseapp.com",
+    databaseURL: "https://ecq-express.firebaseio.com",
+    projectId: "ecq-express",
+    storageBucket: "ecq-express.appspot.com",
+    messagingSenderId: "262564869989",
+    appId: "1:262564869989:web:17a80867ac26f7e3a3538c",
+    measurementId: "G-TLZV68GL02"
+  }
 };
 
 /*
