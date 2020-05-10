@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
+import { AuthConstants } from '../config/auth-constants';
 
 @Component({
   selector: 'app-home',
@@ -31,15 +35,19 @@ export class HomePage implements OnInit {
       icon: 'location'
     },
     {
-      title: 'Todo',
+      title: 'Service',
       url: '/home/todo-list',
-      icon: 'location'
+      icon: 'cog'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() { }
+  constructor(private storageService: StorageService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  logout(){
+    this.router.navigate(['']);
+    this.storageService.clear();    
+  }
 }

@@ -49,6 +49,7 @@ export class TodoDetailsPage implements OnInit {
   
   updateTodo() {  
     this.todoService.updateTodo(this.todo).then(() => {  
+      this.router.navigate(['home/todo-list']); 
       this.showToast('todo updated');  
     }, err => {  
       this.showToast('There was a some problem in updating your todo :(');  
