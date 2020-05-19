@@ -1,5 +1,38 @@
-.container{
-    padding: 10px;
+
+.profile-image {
     margin-top: 20px;
-    text-align: center
+    width: 100%;   
+    height: 200px;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+}
+
+.profile-image img{
+    width: 200px;
+    
+}
+
+.cell-class {
+    border-color: lightgrey; 
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-spacing: .01em; 
+    border-style:solid;
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-inline-end: 5px;
+    text-align: center;
+  }
+
+  .grid_dashboard{
+      margin-bottom:5px;
+  }
+
+  img{
+    width: 120px;
+    
 }

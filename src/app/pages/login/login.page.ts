@@ -45,5 +45,9 @@ export class LoginPage implements OnInit {
     });
 
   }
+
+  loginPhoneNumber(){
+    this.router.navigate(['verification']);
+  }
   
 }

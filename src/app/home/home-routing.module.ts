@@ -56,6 +56,22 @@ const routes: Routes = [
     {
       path: 'todo-list',
       loadChildren: () => import('../pages/todo-list/todo-list.module').then(m => m.TodoListPageModule)
+    },
+    {
+      path: 'employees',
+      loadChildren: () => import('../pages/employees/employees.module').then(m => m.EmployeesPageModule)
+    },
+    {
+      path: 'category',
+      loadChildren: () => import('../pages/category/category.module').then(m => m.CategoryPageModule)
+    },
+    {
+      path: 'employeeservice',
+      loadChildren: () => import('../pages/employeeservice/employeeservice.module').then(m => m.EmployeeservicePageModule)
+    },
+    {
+      path: 'upload-image',
+      loadChildren: () => import('../pages/upload-image/upload-image.module').then( m => m.UploadImagePageModule)
     }
     ]
   }];

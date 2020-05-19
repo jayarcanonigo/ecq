@@ -1,26 +1,44 @@
-<ion-menu side="start" menuId="first" contentId="main">
-  <ion-header>
-    <ion-toolbar color="dark">
-      <ion-icon name="close"></ion-icon>
-    </ion-toolbar>
-  </ion-header>
-  <div class="profile-image">
-  </div>
-
-  <ion-content color="dark">
-    <ion-list>
-      <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages; let i = index">
-        <ion-item color="dark" (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
-          [class.selected]="selectedIndex == i">
-          <ion-icon slot="start" [name]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-          <ion-label>{{ p.title }}</ion-label>
-        </ion-item>
-      </ion-menu-toggle>
-      <ion-item lines="none"  color="dark" (click)="logout()">
-        <ion-icon slot="start" name="power-outline" md="power-sharp"></ion-icon>
-        <ion-label>Logout</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<ion-router-outlet id="main"></ion-router-outlet>
+<ion-header [translucent]="true">
+  <ion-toolbar color="medium">
+    <ion-buttons (click)="gotoLocation()" slot="start">
+      <ion-icon size="large" name="location-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title class="location-title" >Location</ion-title>
+    <ion-title class="current-title">{{currentLocation | async}}</ion-title>
+   
+    <ion-buttons (click)="openCart()" slot="end">
+        <div class="cart-length">{{cartItemCount | async}}</div>
+        <ion-icon name="cart" class="cart-icon"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-searchbar></ion-searchbar>
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="/">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="order">
+        <ion-icon name="reader-outline"></ion-icon>
+        <ion-label>Order</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="upload-image">
+        <ion-icon name="list-outline"></ion-icon>
+        <ion-label>Category</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="profile">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Account</ion-label>
+      </ion-tab-button>
+    
+    <ion-tab-button tab="help">
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <ion-label>Help</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

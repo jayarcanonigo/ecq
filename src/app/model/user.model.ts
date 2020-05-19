@@ -1,6 +1,7 @@
 export interface User {
-    phoneNumber: string;
+   phoneNumber: string;
     lastName: string;
     firstName: string;
     password: string;
+    verificationId : string;
 }

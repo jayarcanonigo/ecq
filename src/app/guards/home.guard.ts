@@ -17,7 +17,8 @@ export class HomeGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     return new Promise(resolve => {
-      this.storageService.get(AuthConstants.AUTH).then(res => {
+      resolve(true);
+     /* this.storageService.get(AuthConstants.AUTH).then(res => {
         if (res) {
           resolve(true);
         } else {
@@ -27,7 +28,7 @@ export class HomeGuard implements CanActivate {
       }
       ).catch(err => {
         resolve(false);
-      });
+      });*/
     });
   }
 

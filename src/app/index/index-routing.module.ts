@@ -8,40 +8,44 @@ const routes: Routes = [
     path: '',
     component: IndexPage,
     canActivate: [IndexGuard],
-    children:[{
-      path:'',
+    children: [{
+      path: '',
       loadChildren: () => import('../pages/welcome/welcome.module').then(
-         m => m.WelcomePageModule)
+        m => m.WelcomePageModule)
     },
     {
-      path:'login',
-      loadChildren:()=>
+      path: 'login',
+      loadChildren: () =>
         import('../pages/login/login.module').then(
           m => m.LoginPageModule
         )
-    },   
+    },
     {
       path: 'signup',
-      loadChildren: () => import('../pages/signup/signup.module').then( 
+      loadChildren: () => import('../pages/signup/signup.module').then(
         m => m.SignupPageModule)
     },
     {
-      path:'reasons',
-      loadChildren:()=>
+      path: 'reasons',
+      loadChildren: () =>
         import('../pages/reasons/reasons.module').then(
           m => m.ReasonsPageModule
         )
     },
     {
-      path:'signup',
-      loadChildren:()=>
+      path: 'signup',
+      loadChildren: () =>
         import('../pages/signup/signup.module').then(
           m => m.SignupPageModule
         )
+    },
+    {
+      path: 'verification',
+      loadChildren: () => import('../pages/verification/verification.module').then(m => m.VerificationPageModule)
     }]
   }];
-  @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
-export class IndexPageRoutingModule {}
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class IndexPageRoutingModule { }

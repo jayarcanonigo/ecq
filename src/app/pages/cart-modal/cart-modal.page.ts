@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, CartService } from '../../services/cart.service';
 import { ModalController } from '@ionic/angular';
+import { JobsService, Job } from '../../services/jobs.service';
 
 @Component({
   selector: 'app-cart-modal',
@@ -9,24 +9,24 @@ import { ModalController } from '@ionic/angular';
 })
 export class CartModalPage implements OnInit {
 
-  cart  : Product[] = [];
+  cart  : Job[] = [];
 
-  constructor(private cartService: CartService, private modalCtrl: ModalController) { }
+  constructor(private jobsService: JobsService, private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.cart = this.cartService.getCart();
+    this.cart = this.jobsService.getCart();
   }
 
-  increaseCartItem(product){
-    this.cartService.addProduct(product);
+  increaseCartItem(jobs){
+    this.jobsService.addService(jobs);
   }
 
-  decreaseCartItem(product){
-    this.cartService.decreaseProduct(product);
+  decreaseCartItem(jobs){
+    this.jobsService.decreasService(jobs);
   }
 
-  removeCartItem(product){
-    this.cartService.removeProduct(product);
+  removeCartItem(jobs){
+    this.jobsService.removeService(jobs);
   }
 
   getTotal(){

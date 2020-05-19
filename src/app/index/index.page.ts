@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-index',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexPage implements OnInit {
 
-  constructor() { }
+
+  constructor(public af: AngularFireAuth) { }
 
   ngOnInit() {
   }
 
+
 }
+
+

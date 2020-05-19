@@ -16,10 +16,13 @@
           </ion-item>   
           <ion-item>
               <a href="../signup" > Create a new account</a>
-           </ion-item>          
-          <ion-button color="dark" (click)="loginAction()" expand="block" shape="round">Login</ion-button>
-          
-       
+           </ion-item>                
       </ion-list>
+      <div style="text-align: center"> 
+      <ion-button color="dark" (click)="loginAction()" expand="block" shape="round">Login</ion-button>
+      <ion-label > or</ion-label>
+      <ion-button color="dark" (click)="loginPhoneNumber()" expand="block" shape="round">Phone number</ion-button>
+    </div>
   </form>
+
 </ion-content>
