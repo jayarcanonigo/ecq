@@ -66,13 +66,30 @@ const routes: Routes = [
       loadChildren: () => import('../pages/category/category.module').then(m => m.CategoryPageModule)
     },
     {
+      path: 'category/:id',
+      loadChildren: () => import('../pages/category/category.module').then(m => m.CategoryPageModule)
+    },
+    {
       path: 'employeeservice',
       loadChildren: () => import('../pages/employeeservice/employeeservice.module').then(m => m.EmployeeservicePageModule)
     },
     {
       path: 'upload-image',
       loadChildren: () => import('../pages/upload-image/upload-image.module').then( m => m.UploadImagePageModule)
+    },
+    {
+      path: 'services',
+      loadChildren: () => import('../pages/services/services.module').then( m => m.ServicesPageModule)
+    },
+    {
+      path: 'categorylist',
+      loadChildren: () => import('../pages/categorylist/categorylist.module').then( m => m.CategorylistPageModule)
+    },
+    {
+      path: 'servicelist',
+      loadChildren: () => import('../pages/servicelist/servicelist.module').then( m => m.ServicelistPageModule)
     }
+  
     ]
   }];
 @NgModule({

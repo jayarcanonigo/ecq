@@ -6,6 +6,7 @@ import { AngularFireStorage , AngularFireUploadTask } from '@angular/fire/storag
 export interface Category {
   id?: string;
   name: string;
+  fullPath: string;
   url: string;
   created: string;
 }
@@ -35,32 +36,46 @@ export class DataService {
 
   }
 
+  getCategory(id: string): Observable<Category> {  
+    return this.todoCollection.doc<Category>(id).valueChanges().pipe(  
+      take(1),  
+      map(todo => {  
+        todo.id = id;  
+        return todo;  
+      })  
+    );  
+  }  
+  
+  updateCategory(categoy: Category): Promise<void> {  
+    return this.todoCollection.doc(categoy.id).update({
+       name: categoy.name, 
+       fullPath: categoy.fullPath,
+       url: categoy.url
+      });  
+  }  
+
   uploadToStorage(information): AngularFireUploadTask {
     let newName = `${new Date().getTime()}.txt`;
 
     return this.afStorage.ref(`files/${newName}`).putString(information);
   }
 
-  deleteFile(file) {
-    let key = file.key;
-    let storagePath = file.fullPath;
-
-    this.todoCollection.doc(key).delete();
+  deleteFile(category : Category) {
+    let id = category.id;
+    let storagePath = category.fullPath;
     return this.afStorage.ref(storagePath).delete();
   }
 
+  deleteCategory(category : Category){
+    this.deleteFile(category);
+    let id = category.id;
+    this.todoCollection.doc(id).delete();
+  }
 
-  storeInfoToDatabase(metainfo) {
-    // let toSave = {
-    //   created: metainfo.timeCreated,
-    //   url: metainfo.metadata.downloadURLs[0],
-    //   fullPath: metainfo.fullPath,
-    //   contentType: metainfo.contentType
-    // }
-    console.log("toSave" ,metainfo);
-    
-      return null;
-    //return this.todoCollection.add(category);
+
+  storeInfoToDatabase(category) {
+    category.created = `${new Date().getTime()}`;
+    return this.todoCollection.add(category);
   }
 }
 

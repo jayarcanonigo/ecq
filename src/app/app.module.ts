@@ -20,13 +20,14 @@ import * as firebase from 'firebase/app';
 import { Camera } from '@ionic-native/camera/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
-import { File } from '@ionic-native/File/ngx';
 import { MediaCapture } from '@ionic-native/media-capture/ngx';
 import { Media } from '@ionic-native/media/ngx';
 import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { AngularFireStorage } from '@angular/fire/storage';
-
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import {  File } from '@ionic-native/file/ngx';
+import {  FilePath } from '@ionic-native/file-path/ngx';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -43,10 +44,12 @@ firebase.initializeApp(environment.firebaseConfig);
     HttpClientModule,
     AngularFireAuth,
     AngularFireStorage,
+    FileChooser,
+    FilePath,
+    File,
     Camera,
     ImagePicker,
-    MediaCapture,
-    File,
+    MediaCapture,  
     Media,
     StreamingMedia,
     PhotoViewer,
