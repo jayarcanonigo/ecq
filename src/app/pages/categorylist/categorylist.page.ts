@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService, Category } from '../../services/data.service';
+
 import { Observable } from 'rxjs';
+import { Category } from '../../model/model';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'app-categorylist',
@@ -9,8 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class CategorylistPage implements OnInit {
   public files: Observable<Category[]>;
-  constructor(private dataProvider: DataService) {
-    this.files = this.dataProvider.getFiles();
+  constructor(private dataProvider: CategoriesService) {
+    this.files = this.dataProvider.getCategories();
    }
 
   ngOnInit() {

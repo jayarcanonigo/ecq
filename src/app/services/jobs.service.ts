@@ -1,28 +1,96 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs'; 
+import { Observable } from 'rxjs';  
+import { AngularFirestoreCollection, AngularFirestore, DocumentReference } from '@angular/fire/firestore';  
+import { map, take } from 'rxjs/operators';  
+import { AngularFireStorage , AngularFireUploadTask } from '@angular/fire/storage';
+import { Job } from '../model/model';
 
-export interface Job{
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
+
 @Injectable({
   providedIn: 'root'
 })
 export class JobsService {
 
   data: Job[] = [
-    {id: 0, name: 'Massage', price: 500, quantity: 1},
-    {id: 1, name: 'Hair Cut', price: 200, quantity: 1},
-    {id: 2, name: 'Hair Color', price: 300, quantity: 1},
-    {id: 3, name: 'Hair Wax', price: 600, quantity: 1}
+    {id: '0', name: 'Massage', price: 500, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '1', name: 'Hair Cut', price: 200, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '2', name: 'Hair Color', price: 300, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '3', name: 'Hair Wax', price: 600, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""}
 
   ];
 
   private job = [];
   private serviceCount = new BehaviorSubject(0);
-  constructor() { }
+  private jobs: Observable<Job[]>;
+  private jobCollection: AngularFirestoreCollection<Job>;
+
+  constructor(private db: AngularFirestore, private afStorage: AngularFireStorage) {
+    this.jobCollection = this.db.collection<Job>('services');
+
+    
+    this.jobs = this.jobCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+  }
+
+  getJobs(categoryId): Observable<Job[]> {  
+    this.jobCollection = this.db.collection('services', ref => ref.where('categoryId', '==', `${categoryId}`));
+   
+    this.jobs = this.jobCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => { 
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    return this.jobs;
+  }
+  
+
+  getJob(id: string): Observable<Job> {  
+    return this.jobCollection.doc<Job>(id).valueChanges().pipe(  
+      take(1),  
+      map(job => {  
+        job.id = id;  
+        return job;  
+      })  
+    );  
+  }  
+  
+  updateJob(job: Job): Promise<void> {  
+    return this.jobCollection.doc(job.id).update({
+       name: job.name,
+       price: job.price,
+       minimunPrice: job.minimunPrice,
+       quantity: job.quantity,
+       categoryId: job.categoryId
+      });  
+  }  
+
+ 
+
+ 
+  deleteJob(job : Job){
+    let id = job.id; 
+    this.jobCollection.doc(id).delete();
+  }
+
+
+  addJob(job: Job) {
+    job.createdDate = `${new Date().getTime()}`;
+    return this.jobCollection.add(job);
+  }
+
 
   getProducts(){
     return this.data;

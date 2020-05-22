@@ -18,16 +18,19 @@
   </ion-header>
   
   <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">Help</ion-title>
-      </ion-toolbar>
-    </ion-header>
-   
-    <div class="container">
-      <h4><strong class="capitalize">Help</strong></h4>
-      <br>
-      <app-logo></app-logo>
-    </div>
+      <ion-list>
+          <ion-list-header>
+            <ion-label>
+              Objects as Values (compareWith)
+            </ion-label>
+          </ion-list-header>
+        
+          <ion-item>
+            <ion-label>Users</ion-label>
+            <ion-select [(ngModel)]="user" [compareWith]="compareWithFn">
+              <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
   </ion-content>
   

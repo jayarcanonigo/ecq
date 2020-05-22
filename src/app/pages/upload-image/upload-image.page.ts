@@ -5,7 +5,6 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NavController, LoadingController } from '@ionic/angular';
-import { DataService, Category } from '../../services/data.service';
 import { AlertController } from '@ionic/angular';
 import { ToastService } from '../../services/toast.service';
 import { AngularFireStorageReference, AngularFireUploadTask, AngularFireStorage } from '@angular/fire/storage';
@@ -14,6 +13,8 @@ import { File } from '@ionic-native/file/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { Capacitor } from '@capacitor/core';
 import * as firebase from 'firebase';
+import { Category } from '../../model/model';
+import { CategoriesService } from '../../services/categories.service';
 
 
 
@@ -37,11 +38,11 @@ export class UploadImagePage {
   public files: Observable<Category[]>;
   loading : any;
 
-  constructor(public navCtrl: NavController, private dataProvider: DataService, private alertCtrl: AlertController,
+  constructor(public navCtrl: NavController, private dataProvider: CategoriesService, private alertCtrl: AlertController,
     private toastCtrl: ToastService, private iab: InAppBrowser, private afStorage: AngularFireStorage,
     private camera: Camera, public loadingCtrl: LoadingController,
     private fileChooser: FileChooser, private file: File, private filePath: FilePath) {
-    this.files = this.dataProvider.getFiles();
+    this.files = this.dataProvider.getCategories();
   }
   ngOnInit() {
   }
@@ -158,7 +159,7 @@ export class UploadImagePage {
        finalize(() => {
          this.ref.getDownloadURL().subscribe(url => {
            this.category.url = url;         
-           this.dataProvider.storeInfoToDatabase(this.category);
+           this.dataProvider.addCategory(this.category);
             this.loading.onDidDismiss();
             this.toastCtrl.presentToast("Finish Download");
            console.log(url); // <-- do what ever you want with the url..

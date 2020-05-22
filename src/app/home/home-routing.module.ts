@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
 import { HomeGuard } from '../guards/home.guard';
+import { DataResolverService } from '../resolver/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -78,7 +79,10 @@ const routes: Routes = [
       loadChildren: () => import('../pages/upload-image/upload-image.module').then( m => m.UploadImagePageModule)
     },
     {
-      path: 'services',
+      path: 'services/:id',
+      resolve: {
+        data: DataResolverService
+      },
       loadChildren: () => import('../pages/services/services.module').then( m => m.ServicesPageModule)
     },
     {

@@ -4,6 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+
+<ion-item>
+  <ion-label>Category</ion-label>
+  <ion-select (ionChange)="onchange($event)" [(ngModel)]="categorySelected" id="customPopoverSelect" interface="action-sheet" PlaceHolder="Select Category">
+    <ion-select-option *ngFor="let category of ( categories | async)" [value]="category.id">
+      {{category.name}}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-content padding>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">  
+      <ion-fab-button color="dark" (click)="addService()">  
+        <ion-icon name="add"></ion-icon>  
+      </ion-fab-button>  
+    </ion-fab>  
+    
+    <ion-list>  
+        <ion-item button (click)="updateService(job.id)"*ngFor="let job of ( jobs | async)">  
+          {{ job.name}},  {{job.minimumPrice}}
+        </ion-item>  
+      </ion-list>  
 
 </ion-content>
