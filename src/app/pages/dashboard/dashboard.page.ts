@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoriesService } from '../../services/categories.service';
+import { Observable } from 'rxjs';
+import { Category } from '../../model/model';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +11,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private router: Router) { }
+  public cagtegories: Observable<Category[]>;
+
+  constructor(private router: Router, private categoriesService: CategoriesService) { 
+
+    this.cagtegories = this.categoriesService.getCategories();
+  }
 
   ngOnInit() {
   }

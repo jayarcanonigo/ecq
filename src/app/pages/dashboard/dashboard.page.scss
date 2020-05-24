@@ -13,26 +13,30 @@
     
 }
 
-.cell-class {
-    border-color: lightgrey; 
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-spacing: .01em; 
-    border-style:solid;
+.cell-class {    
     padding: 5px;
     margin-left: 5px;
     margin-right: 5px;
     margin-inline-end: 5px;
     text-align: center;
+  } 
+  .cell-class mat-grid-tile{
+    border-color: lightgrey; 
+      width: 102px;
+      height: 102px;
+      border-width: thin;
+      border-style:solid;
+  }
+  .cell-class mat-card-image{
+    max-width: 100%;
+    height: auto;
   }
 
   .grid_dashboard{
       margin-bottom:5px;
   }
 
-  img{
-    width: 120px;
-    
-}
+
+
+
+  

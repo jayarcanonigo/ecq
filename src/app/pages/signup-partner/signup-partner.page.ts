@@ -12,13 +12,12 @@ import { StorageService } from '../../services/storage.service';
 import { AuthConstants } from '../../config/auth-constants';
 import { VerificationService } from '../../services/verification.service';
 
-
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  selector: 'app-signup-partner',
+  templateUrl: './signup-partner.page.html',
+  styleUrls: ['./signup-partner.page.scss'],
 })
-export class SignupPage implements OnInit {
+export class SignupPartnerPage implements OnInit {
 
   windowRef: any;
   verificationCode: string;
@@ -152,8 +151,6 @@ export class SignupPage implements OnInit {
       });*/ 
 
   sendVerification() {
-
-
     this.windowRef.confirmationResult
       .confirm(this.code)
       .then(result => {

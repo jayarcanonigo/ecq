@@ -28,6 +28,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import {  File } from '@ionic-native/file/ngx';
 import {  FilePath } from '@ionic-native/file-path/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 
 firebase.initializeApp(environment.firebaseConfig);
@@ -36,7 +38,8 @@ firebase.initializeApp(environment.firebaseConfig);
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CartModalPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule, AngularFireDatabaseModule
+    AngularFirestoreModule, AngularFireDatabaseModule, BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [    
     StatusBar,

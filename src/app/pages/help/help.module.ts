@@ -8,6 +8,7 @@ import { HelpPageRoutingModule } from './help-routing.module';
 
 import { HelpPage } from './help.page';
 import { ComponentsModule } from '../../components/components.module';
+import { MaterialModule } from '../../material.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     HelpPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MaterialModule
   ],
   declarations: [HelpPage]
 })
