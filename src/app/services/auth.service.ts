@@ -15,7 +15,7 @@ export class AuthService {
   private todoCollection: AngularFirestoreCollection<User>;
 
   constructor(private db: AngularFirestore) {
-    this.todoCollection = this.db.collection<User>('Users');
+    this.todoCollection = this.db.collection<User>('Partner');
     this.users = this.todoCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

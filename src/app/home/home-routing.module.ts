@@ -90,9 +90,14 @@ const routes: Routes = [
       loadChildren: () => import('../pages/categorylist/categorylist.module').then( m => m.CategorylistPageModule)
     },
     {
-      path: 'servicelist',
+      path: 'servicelist/:id',
       loadChildren: () => import('../pages/servicelist/servicelist.module').then( m => m.ServicelistPageModule)
+    },
+    {
+      path: 'schedule',
+      loadChildren: () => import('../pages/schedule/schedule.module').then( m => m.SchedulePageModule)
     }
+  
   
     ]
   }];

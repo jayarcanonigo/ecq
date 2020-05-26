@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HelpPageRoutingModule } from './help-routing.module';
+import { SchedulePageRoutingModule } from './schedule-routing.module';
 
-import { HelpPage } from './help.page';
+import { SchedulePage } from './schedule.page';
+import { MaterialModule } from '../../material.module';
 import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
@@ -14,9 +15,10 @@ import { ComponentsModule } from '../../components/components.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HelpPageRoutingModule,
+    SchedulePageRoutingModule,
+    MaterialModule,
     ComponentsModule
   ],
-  declarations: [HelpPage]
+  declarations: [SchedulePage]
 })
-export class HelpPageModule {}
+export class SchedulePageModule {}

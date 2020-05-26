@@ -6,18 +6,19 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { StartComponent } from './start/start.component';
 import { HeaderComponent } from './header/header.component';
+import { TimeScheduleComponent } from './time-schedule/time-schedule.component';
+import { MaterialModule } from '../material.module';
 
 
 
 @NgModule({
-  declarations: [SlidesComponent, LogoComponent,StartComponent,HeaderComponent],
-  exports:[SlidesComponent, LogoComponent,StartComponent, HeaderComponent],
+  declarations: [SlidesComponent, LogoComponent,StartComponent,HeaderComponent, TimeScheduleComponent],
+  exports:[SlidesComponent, LogoComponent,StartComponent, HeaderComponent, TimeScheduleComponent],
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
-    
-    
+    IonicModule ,
+    MaterialModule  
   ]
 })
 export class ComponentsModule { }

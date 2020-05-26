@@ -14,9 +14,9 @@
           </div>
       
           <ion-list>
-              <ion-item>
-                  <ion-label position="floating">9xxxxxxxx</ion-label>
-                  <ion-input maxlength="10"  [(ngModel)]="user.phoneNumber"></ion-input>
+              <ion-item>                  
+                  <ion-input style="margin-left: 0px;padding-left: 0px;" maxlength="10"  [(ngModel)]="user.phoneNumber"></ion-input>
+                  <ion-label style="margin-right: 0px;" slot="start">+63</ion-label>
               </ion-item>
               <ion-item>
                   <ion-label type="text" position="floating">Last name</ion-label>

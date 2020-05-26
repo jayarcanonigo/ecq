@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Job } from '../../model/model';
 import { JobsService } from '../../services/jobs.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-services',
@@ -23,7 +24,9 @@ export class ServicesPage implements OnInit {
     jobId: "",
     categoryId: ""
   }
-  constructor(private route: ActivatedRoute, private jobService: JobsService, private router: Router) {
+  constructor(private route: ActivatedRoute, private jobService: JobsService, private router: Router,
+              private toastService: ToastService
+    ) {
     
 
 
@@ -59,16 +62,19 @@ export class ServicesPage implements OnInit {
 
   addJob() {
     this.jobService.addJob(this.job);
-    this.router.navigate(['home/servicelist']);
+    this.toastService.presentToast('New Service Added.');
+    this.router.navigate(['home/servicelist/'+this.job.categoryId]);
   }
 
   deleteJob() {
-    this.jobService.deleteJob(this.job);
-    this.router.navigate(['home/servicelist']);
+    this.jobService.deleteJob(this.job);  
+    this.toastService.presentToast('New Service Deleted.');
+    this.router.navigate(['home/servicelist/'+this.job.categoryId]);
   }
 
   updateJob() {
     this.jobService.updateJob(this.job);
-    this.router.navigate(['home/servicelist']);
+    this.toastService.presentToast('New Service Updated.');
+    this.router.navigate(['home/servicelist/'+this.job.categoryId]);
   }
 }

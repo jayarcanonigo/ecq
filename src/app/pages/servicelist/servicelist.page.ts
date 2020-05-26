@@ -4,7 +4,7 @@ import { Platform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Category, Job } from '../../model/model';
 import { JobsService } from '../../services/jobs.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CategoriesService } from '../../services/categories.service';
 import { DataService } from '../../services/data.service';
 
@@ -17,9 +17,12 @@ export class ServicelistPage implements OnInit {
   public myIndex: string = '';
   public dropdown1: string = '2';
   test: Category[];
-  categorySelected: string;
+  categoryId: string;
   categories: Observable<Category[]>;
   jobs: Observable<Job[]>;
+  data: {
+    id: ""
+  }
   fruits = [
     { id: 1, name: 'apple' },
     { id: 2, name: 'banana' },
@@ -31,43 +34,55 @@ export class ServicelistPage implements OnInit {
     private platForm: Platform,
     private dataCategory: CategoriesService,
     private jobService: JobsService,
-    private router: Router,
-    private dataService: DataService
+    private route: ActivatedRoute,
+    private dataService: DataService,
+    private router: Router
+
   ) {
 
-    this.categories = this.dataCategory.getCategories();
+    this.categoryId = this.route.snapshot.paramMap.get('id');
+    if (this.categoryId) {
+      this.jobs = this.jobService.getJobs(this.categoryId);
+    }
+
   }
 
   ngOnInit() {
-    
 
-  }
 
-  onchange($event) {
-    this.jobs = this.jobService.getJobs($event.detail.value)
-    this.jobs.subscribe(data => {
-      console.log(data);
-      
-    })
   }
 
   addService() {
     let data = {
-      categoryId: this.categorySelected,
+      categoryId: this.categoryId,
       jobId: ""
-    }  
+    }
     this.dataService.setData(2, data);
     this.router.navigateByUrl('/home/services/2');
   }
 
-  updateService(id){
+
+  updateService(id) {
     let data = {
-      categoryId: this.categorySelected,
+      categoryId: this.categoryId,
       jobId: id
     }
     this.dataService.setData(2, data);
     this.router.navigateByUrl('/home/services/2');
   }
+
+
+  onchange($event) {
+    this.jobs = this.jobService.getJobs($event.detail.value)
+    this.jobs.subscribe(data => {
+      console.log(data);
+
+    })
+  }
+
+
+
+
 
 
 
