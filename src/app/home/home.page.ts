@@ -59,7 +59,7 @@ export class HomePage implements OnInit {
      public zone: NgZone
     ) {
 
-      this.currentLocation = location.getCurrentLocation();
+      this.currentLocation = location.getFormattedAddres();
      }
 
   ngOnInit() {
@@ -114,11 +114,11 @@ async getGeoLocation(lat: number, lng: number, type?) {
         let result = results[0];
         this.zone.run(() => {
           if (result != null) {
-            this.location.setCurrentLocation(result.formatted_address);
+            this.location.setFormattedAddress(result.formatted_address);
             console.log('result.formatted_address' +result.formatted_address);
              
             if (type === 'reverseGeocode') {
-              this.location.setCurrentLocation(result.formatted_address);          
+              this.location.setFormattedAddress(result.formatted_address);          
             }
           }
         })

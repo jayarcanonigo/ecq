@@ -34,14 +34,14 @@ export class CategoriesService {
     return this.todoCollection.doc<Category>(id).valueChanges().pipe(  
       take(1),  
       map(todo => {  
-        todo.id = id;  
+        todo.categoryId = id;  
         return todo;  
       })  
     );  
   }  
   
   updateCategory(categoy: Category): Promise<void> {  
-    return this.todoCollection.doc(categoy.id).update({
+    return this.todoCollection.doc(categoy.categoryId).update({
        name: categoy.name, 
        fullPath: categoy.fullPath,
        url: categoy.url
@@ -55,21 +55,22 @@ export class CategoriesService {
   }
 
   deleteFile(category : Category) {
-    let id = category.id;
+    let id = category.categoryId;
     let storagePath = category.fullPath;
     return this.afStorage.ref(storagePath).delete();
   }
 
   deleteCategory(category : Category){
     this.deleteFile(category);
-    let id = category.id;
+    let id = category.categoryId;
     this.todoCollection.doc(id).delete();
   }
 
 
-  addCategory(category) {
+  addCategory(category: Category) {
     category.created = `${new Date().getTime()}`;
-    return this.todoCollection.add(category);
+    category.categoryId = this.db.createId();    
+    return this.todoCollection.doc(category.categoryId).set(category);
   }
 }
 

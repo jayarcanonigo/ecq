@@ -1,46 +1,28 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-        <ion-back-button defaultHref="login" color="dark"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>     
-      <ion-list>
-          <ion-item>
-              <ion-label  position="floating">Service Name</ion-label>
-              <ion-input [(ngModel)]="job.name" ></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label  position="floating">Set Minimum Price</ion-label>
-              <ion-input [(ngModel)]="job.minimumPrice"></ion-input>
-          </ion-item>
-      </ion-list>
-  
-  </ion-content>
-  <ion-footer *ngIf="!job.id">  
-      <ion-toolbar color="success">  
-        <ion-button expand="full" color="light"  fill="clear" (click)="addJob()">  
-          <ion-icon name="checkmark" slot="start"></ion-icon>  
-          Add Service  
-        </ion-button>  
-      </ion-toolbar>  
-    </ion-footer>  
-       
-    <ion-footer *ngIf="job.id">  
-      <ion-row no-padding text-center>  
-        <ion-col size="6">  
-          <ion-button expand="block" color="danger" fill="outline" (click)="deleteJob()">  
-            <ion-icon name="trash" slot="start"></ion-icon>  
-            Delete  
-          </ion-button>  
-        </ion-col>  
-        <ion-col size="6">  
-          <ion-button expand="block" fill="solid" color="success" (click)="updateJob()">  
-            <ion-icon name="save" slot="start"></ion-icon>  
-            Update  
-          </ion-button>  
-        </ion-col>  
-      </ion-row>  
-    </ion-footer>  
+  <ion-toolbar color="primary">
+    <ion-title>Partner Providers</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+
+  <ion-card [routerLink]="['/home/request', serviceId, name, service.Partner[0].userId]"  *ngFor="let service of  services | async   ">
+
+      <ion-item>
+          <ion-avatar slot="start">
+            <img [src]="service.Partner[0].imageURL">
+          </ion-avatar>
+          <ion-label>
+            <h3>{{service.Partner[0].lastName}}, {{service.Partner[0].firstName}}</h3>
+            <p>(2.5Km)</p>
+            <p> <star-rating value="3.5" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating>
+            </p>
+          </ion-label>
+        </ion-item>   
+  </ion-card>
+</ion-content>

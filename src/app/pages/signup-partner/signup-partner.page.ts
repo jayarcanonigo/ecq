@@ -36,6 +36,7 @@ export class SignupPartnerPage implements OnInit {
   confirmPassword: String = "";
   user: User = {
     phoneNumber: "",
+    userId: "",
     lastName: "",
     firstName: "",
     password: "",
@@ -116,7 +117,7 @@ export class SignupPartnerPage implements OnInit {
 
 
     //+639287995743
-    firebase.auth().signInWithPhoneNumber('+63' + this.user.phoneNumber, appVerifier)
+    firebase.auth().signInWithPhoneNumber('+63' + this.user.userId, appVerifier)
       .then(result => {
         console.log('confirmationResult.verificationId' + result.verificationId);
         this.user.verificationId= result.verificationId;

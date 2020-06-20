@@ -76,29 +76,34 @@ const routes: Routes = [
     },
     {
       path: 'upload-image',
-      loadChildren: () => import('../pages/upload-image/upload-image.module').then( m => m.UploadImagePageModule)
+      loadChildren: () => import('../pages/upload-image/upload-image.module').then(m => m.UploadImagePageModule)
     },
     {
-      path: 'services/:id',
-      resolve: {
-        data: DataResolverService
-      },
-      loadChildren: () => import('../pages/services/services.module').then( m => m.ServicesPageModule)
+      path: 'services/:id/:name',
+      loadChildren: () => import('../pages/services/services.module').then(m => m.ServicesPageModule)
     },
     {
       path: 'categorylist',
-      loadChildren: () => import('../pages/categorylist/categorylist.module').then( m => m.CategorylistPageModule)
+      loadChildren: () => import('../pages/categorylist/categorylist.module').then(m => m.CategorylistPageModule)
     },
     {
       path: 'servicelist/:id',
-      loadChildren: () => import('../pages/servicelist/servicelist.module').then( m => m.ServicelistPageModule)
+      loadChildren: () => import('../pages/servicelist/servicelist.module').then(m => m.ServicelistPageModule)
     },
     {
       path: 'schedule',
-      loadChildren: () => import('../pages/schedule/schedule.module').then( m => m.SchedulePageModule)
+      loadChildren: () => import('../pages/schedule/schedule.module').then(m => m.SchedulePageModule)
+    },
+    {
+      path: 'sub-category/:id/:name',
+      loadChildren: () => import('../pages/sub-category/sub-category.module').then(m => m.SubCategoryPageModule)
+    },
+    {
+      path: 'request/:serviceId/:name/:partnerId',
+      loadChildren: () => import('../pages/request/request.module').then(m => m.RequestPageModule)
     }
-  
-  
+
+
     ]
   }];
 @NgModule({

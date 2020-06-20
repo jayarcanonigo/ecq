@@ -20,6 +20,7 @@ export class VerificationPage implements OnInit {
   public phoneNumber: number;
   user: User = {
     phoneNumber: '',
+    userId: '',
     lastName: '',
     firstName: '',
     password: '',

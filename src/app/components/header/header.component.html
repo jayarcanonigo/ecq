@@ -1,27 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>test 3</ion-title>
-    <ion-buttons slot="primary">
-      <ion-button color="secondary">
-        <ion-icon  name="notifications-outline"></ion-icon>
-      </ion-button>
-      
-    </ion-buttons> 
-    <ion-buttons slot="primary">
-      <ion-button color="secondary">        
-        <ion-icon name="alert-outline"></ion-icon>
-      </ion-button>
-      
-    </ion-buttons> 
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">test</ion-title>
+<ion-header >
+    <ion-toolbar color="primary">
+      <ion-buttons (click)="openLocation()" slot="start">
+        <ion-icon size="large" name="location-outline"></ion-icon>
+      </ion-buttons>
+      <ion-title class="location-title" >Location</ion-title>
+      <ion-title class="current-title">{{currentLocation | async}}</ion-title>
+     
+      <ion-buttons (click)="openCart()" slot="end">
+          <div class="cart-length">{{cartItemCount | async}}</div>
+          <ion-icon name="cart" class="cart-icon"></ion-icon>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>

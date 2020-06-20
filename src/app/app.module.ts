@@ -30,16 +30,17 @@ import {  File } from '@ionic-native/file/ngx';
 import {  FilePath } from '@ionic-native/file-path/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-
+import { RatingModule } from 'ng-starrating';
+import { GoogleMapPageModule } from './pages/google-map/google-map.module';
 
 firebase.initializeApp(environment.firebaseConfig);
 @NgModule({
   declarations: [AppComponent, SampleDirective],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CartModalPageModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, CartModalPageModule,GoogleMapPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, AngularFireDatabaseModule, BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule, RatingModule 
   ],
   providers: [    
     StatusBar,

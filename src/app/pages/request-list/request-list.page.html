@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment color="primary" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="Pending">
+      <ion-label>Pending</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="To Do">
+      <ion-label>To Do</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="In Progress">
+      <ion-label>In Progress</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="History">
+      <ion-label>History</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="title === 'Pending'">
+    <ion-card *ngFor="let data of (pendingList | async)">
+      <ion-card-header>
+        <div class="divPhoto">
+          <img style="height: 200px;" class="imagePhoto" src="assets/images/logo.png">
+        </div>
+
+        <ion-card-subtitle>{{data.serviceName}}</ion-card-subtitle>
+        <ion-card-title>{{data.name}}</ion-card-title>
+        <ion-label>{{data.date}}</ion-label>
+      </ion-card-header>
+
+    </ion-card>
+  </div>
+  <div *ngIf="title === 'To Do'">
+    <ion-card *ngFor="let data of (todoList | async)">
+      < <ion-card-header>
+        <div class="divPhoto">
+          <img style="height: 200px;" class="imagePhoto" src="assets/images/logo.png">
+        </div>
+
+        <ion-card-subtitle>{{data.serviceName}}</ion-card-subtitle>
+        <ion-card-title>{{data.name}}</ion-card-title>
+        <ion-label>{{data.date}}</ion-label>
+        </ion-card-header>
+    </ion-card>
+  </div>
+  <div *ngIf="title === 'In Progress'">
+    <ion-card *ngFor="let data of (inProgressList | async)">
+      <ion-card-header>
+        <div class="divPhoto">
+          <img style="height: 200px;" class="imagePhoto" src="assets/images/logo.png">
+        </div>
+
+        <ion-card-subtitle>{{data.serviceName}}</ion-card-subtitle>
+        <ion-card-title>{{data.name}}</ion-card-title>
+        <ion-label>{{data.date}}</ion-label>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div *ngIf="title === 'History'">
+    <ion-card *ngFor="let data of (pastList | async)">
+      <ion-card-header>
+        <div class="divPhoto">
+          <img style="height: 200px;" class="imagePhoto" src="assets/images/logo.png">
+        </div>
+
+        <ion-card-subtitle>{{data.serviceName}}</ion-card-subtitle>
+        <ion-card-title>{{data.name}}</ion-card-title>
+        <ion-label>{{data.date}}</ion-label>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+</ion-content>

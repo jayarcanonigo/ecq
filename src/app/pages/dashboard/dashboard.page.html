@@ -8,7 +8,7 @@
     </div>
   </section>
 <mat-grid-list class="cell-class" cols="3" rowHeight="2:1">
-  <mat-grid-tile [routerLink]="['/home/servicelist', cat.id]"   *ngFor="let cat of ( cagtegories | async)" >
+  <mat-grid-tile [routerLink]="['/home/services', cat.categoryId]"   *ngFor="let cat of ( cagtegories | async)" >
       <img mat-card-image [src]="cat.url"/> 
   </mat-grid-tile>
 </mat-grid-list>

@@ -1,7 +1,8 @@
 export interface User {
-   phoneNumber: string;
+    phoneNumber: string;
+    userId: string;
     lastName: string;
     firstName: string;
     password: string;
-    verificationId : string;
+    verificationId: string;
 }

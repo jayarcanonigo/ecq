@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="dashboard" color="warning"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+    <ion-card class="livedeals" [routerLink]="['/home/services', job.id, job.name]"  *ngFor="let job of  jobs">
+      <ion-item  text-wrap >
+        <ion-avatar start>
+          <img src="assets/images/logo.png" class="img-responsive store-logo">
+        </ion-avatar>
+        <ion-label text-capitalize>
+          {{job.name}}
+        </ion-label>
+      </ion-item>
+     
+    </ion-card>
+</ion-content>

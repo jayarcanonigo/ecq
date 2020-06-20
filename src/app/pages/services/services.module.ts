@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ServicesPageRoutingModule } from './services-routing.module';
 
 import { ServicesPage } from './services.page';
+import { RatingModule } from 'ng-starrating';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ServicesPageRoutingModule
+    ServicesPageRoutingModule,
+    RatingModule 
   ],
   declarations: [ServicesPage]
 })

@@ -13,10 +13,10 @@ import { Job } from '../model/model';
 export class JobsService {
 
   data: Job[] = [
-    {id: '0', name: 'Massage', price: 500, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
-    {id: '1', name: 'Hair Cut', price: 200, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
-    {id: '2', name: 'Hair Color', price: 300, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
-    {id: '3', name: 'Hair Wax', price: 600, minimunPrice: 500, quantity: 1, categoryId : "", createdDate: ""}
+    {id: '0', name: 'Massage', price: 500, minimumPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '1', name: 'Hair Cut', price: 200, minimumPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '2', name: 'Hair Color', price: 300, minimumPrice: 500, quantity: 1, categoryId : "", createdDate: ""},
+    {id: '3', name: 'Hair Wax', price: 600, minimumPrice: 500, quantity: 1, categoryId : "", createdDate: ""}
 
   ];
 
@@ -71,7 +71,7 @@ export class JobsService {
     return this.jobCollection.doc(job.id).update({
        name: job.name,
        price: job.price,
-       minimunPrice: job.minimunPrice,
+       minimunPrice: job.minimumPrice,
        quantity: job.quantity,
        categoryId: job.categoryId
       });  
@@ -87,8 +87,9 @@ export class JobsService {
 
 
   addJob(job: Job) {
+    job.id = this.db.createId();  
     job.createdDate = `${new Date().getTime()}`;
-    return this.jobCollection.add(job);
+    return this.jobCollection.doc(job.id).set(job);
   }
 
 

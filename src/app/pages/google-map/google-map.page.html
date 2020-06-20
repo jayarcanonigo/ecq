@@ -1,9 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="medium">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Location</ion-title>            
-  </ion-toolbar>
-</ion-header>
+
 <div #map id="map"></div>
+<mat-grid-list class="cell-class" cols="4" rowHeight="30px">
+  <mat-grid-tile>
+    Address:
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <p id="address"></p>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    Latitute:
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p id="latitude"></p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+      longitude:
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p id="longitude"></p>
+  </mat-grid-tile>
+</mat-grid-list>
+<ion-footer>
+  <ion-toolbar color="success">
+    <ion-button expand="full" color="light" fill="clear" (click)="goBack()">
+      <ion-icon name="checkmark" slot="start"></ion-icon>
+      Confirm Address
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
